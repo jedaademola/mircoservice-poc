@@ -37,8 +37,8 @@ public class SpringFoxConfig {
                 "This application demonstrates documenting of Spring Boot app with Swagger using SpringFox.",
                 "1.0.0",
                 "TERMS OF SERVICE URL",
-                new Contact("Sakthi C", "http://www.deloitte.com", "Sakthi@XXXXX.com"),
-                "XXXXXX License",
+                new Contact("Sakthi Praba Chandrasekaran", "http://www.xxx.com", "Sakthi@xxx.com"),
+                "xxx License",
                 "LICENSE URL",
                 Collections.emptyList()
         );

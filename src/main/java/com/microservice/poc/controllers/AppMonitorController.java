@@ -51,7 +51,7 @@ public class AppMonitorController {
 
     @RequestMapping(value = "/checkdirectory", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.CREATED)
-    @ApiOperation("${appMonitorcontroller.checkDirectoryb}")
+    @ApiOperation("${appMonitorcontroller.checkDirectory}")
     public ResponseEntity<?> appMonitor(HttpServletRequest request) throws Exception {
 
         HashMap<String, String> appProperties = new HashMap<>();
