@@ -26,7 +26,7 @@ public class SpringFoxConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.microservice.poc"))
-                .paths(PathSelectors.ant("/v1/**"))
+                .paths(PathSelectors.ant("/api/**"))
                 .build()
                 .apiInfo(getApiInfo());
     }
@@ -37,8 +37,8 @@ public class SpringFoxConfig {
                 "This application demonstrates documenting of Spring Boot app with Swagger using SpringFox.",
                 "1.0.0",
                 "TERMS OF SERVICE URL",
-                new Contact("Sakthi C", "http://www.deloitte.com", "Sakthi@deloitte.com"),
-                "Deloitte License",
+                new Contact("Sakthi C", "http://www.deloitte.com", "Sakthi@XXXXX.com"),
+                "XXXXXX License",
                 "LICENSE URL",
                 Collections.emptyList()
         );

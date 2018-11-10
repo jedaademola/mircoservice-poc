@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping(value = "/ap1/v1/monitoring/")
+@RequestMapping(value = "/api/v1/monitoring/")
 @Api(description = "Set of endpoints for checking Application Health.")
 public class AppMonitorController {
 
@@ -34,10 +34,10 @@ public class AppMonitorController {
     private ApiMonitorService apiMonitorService;
 
 
-    @RequestMapping(value = "/monitor", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/checkdb", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.CREATED)
     @ApiOperation("${appMonitorcontroller.checkdb}")
-    public ResponseEntity<?> appMonitor(HttpServletRequest request) throws Exception {
+    public ResponseEntity<?> dbMonitor(HttpServletRequest request) throws Exception {
 
         HashMap<String, String> appProperties = apiMonitorService.getLookupValues();
 
@@ -48,4 +48,20 @@ public class AppMonitorController {
 
         return new ResponseEntity<>(appProperties, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/checkdirectory", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    @ApiOperation("${appMonitorcontroller.checkDirectoryb}")
+    public ResponseEntity<?> appMonitor(HttpServletRequest request) throws Exception {
+
+        HashMap<String, String> appProperties = new HashMap<>();
+
+        appProperties.put("Time", new Date().toString());
+        appProperties.put("Application URL", Utility.getServerURl(request, isBehindProxy, proxyServerName));
+        appProperties.put("App Name", appName);
+        appProperties.put("Application Status", "Running");
+
+        return new ResponseEntity<>(appProperties, HttpStatus.OK);
+    }
+
 }
