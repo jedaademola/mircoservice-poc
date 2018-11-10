@@ -1,11 +1,10 @@
-package com.vojtechruzicka.springfoxexample.services;
+package com.microservice.poc.services;
 
-import com.vojtechruzicka.springfoxexample.domain.Person;
+import com.microservice.poc.domain.Person;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.OptionalInt;
 

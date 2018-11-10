@@ -1,21 +1,21 @@
-package com.vojtechruzicka.springfoxexample.controllers;
+package com.microservice.poc.controllers;
 
-import com.vojtechruzicka.springfoxexample.domain.Person;
-import com.vojtechruzicka.springfoxexample.services.PersonService;
+import com.microservice.poc.domain.Person;
+import com.microservice.poc.services.PersonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v2/persons/")
+@RequestMapping("/api/v1/persons/")
 @Api(description = "Set of endpoints for Creating, Retrieving, Updating and Deleting of Persons.")
 public class PersonController {
 
+    @Autowired
     private PersonService personService;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")

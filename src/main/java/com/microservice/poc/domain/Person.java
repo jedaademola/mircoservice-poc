@@ -1,4 +1,4 @@
-package com.vojtechruzicka.springfoxexample.domain;
+package com.microservice.poc.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

@@ -3,18 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.vojtechruzicka</groupId>
-	<artifactId>springfox-example</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<groupId>com.microservice.poc</groupId>
+	<artifactId>microservice-poc</artifactId>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>springfox-example</name>
-	<description>Demo project Springfox REST documentation using swagger</description>
+	<name>Microservice-poc</name>
+	<description>Demo project Microservice-poc REST and documentation using swagger</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.10.RELEASE</version>
+		<version>2.0.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 

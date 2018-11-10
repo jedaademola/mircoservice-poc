@@ -1,4 +1,4 @@
-package com.vojtechruzicka.springfoxexample.config;
+package com.microservice.poc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,20 +25,20 @@ public class SpringFoxConfig {
     public Docket apiDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.vojtechruzicka"))
-                .paths(PathSelectors.ant("/v2/**"))
+                .apis(RequestHandlerSelectors.basePackage("com.microservice.poc"))
+                .paths(PathSelectors.ant("/v1/**"))
                 .build()
                 .apiInfo(getApiInfo());
     }
 
     private ApiInfo getApiInfo() {
         return new ApiInfo(
-                "SpringFox Demo Application",
-                "This application demonstrates documenting os Spring Boot app with Swagger using SpringFox.",
+                "Microserive POC Demo Application",
+                "This application demonstrates documenting of Spring Boot app with Swagger using SpringFox.",
                 "1.0.0",
                 "TERMS OF SERVICE URL",
-                new Contact("Vojtech Ruzicka", "http://www.vojtechruzicka.com", "vojtech.ruz@gmail.com"),
-                "MIT License",
+                new Contact("Sakthi C", "http://www.deloitte.com", "Sakthi@deloitte.com"),
+                "Deloitte License",
                 "LICENSE URL",
                 Collections.emptyList()
         );
