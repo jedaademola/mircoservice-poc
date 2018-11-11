@@ -33,7 +33,7 @@ public class SpringFoxConfig {
 
     private ApiInfo getApiInfo() {
         return new ApiInfo(
-                "Microserive POC Demo Application",
+                "Microservice POC Application",
                 "This application demonstrates documenting of Spring Boot app with Swagger using SpringFox.",
                 "1.0.0",
                 "TERMS OF SERVICE URL",
