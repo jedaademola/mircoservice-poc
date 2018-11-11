@@ -36,9 +36,9 @@ public class AppMonitorController {
     private ApiMonitorService apiMonitorService;
 
 
-    @RequestMapping(value = "/checkdb", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/monitor", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.CREATED)
-    @ApiOperation("${appMonitorcontroller.checkdb}")
+    @ApiOperation("${appMonitorcontroller.monitor}")
     public ResponseEntity<?> dbMonitor(HttpServletRequest request) throws Exception {
 
         HashMap<String, String> appProperties = apiMonitorService.getLookupValues();

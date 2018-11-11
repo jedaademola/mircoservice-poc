@@ -65,7 +65,7 @@ public class DirectoryOperations {
 
     }
 
-    public static String getFile(Path directoryName, String fileName) {
+    public static String getFile(Path directoryName, String fileName) {//TODO Only PDF files
 
         File startingDirectory = new File(directoryName.toFile().getAbsolutePath());
 
