@@ -12,7 +12,6 @@ public class ApiMonitorDao extends AbstractDao<AbstractModel> {
     public void setDataSource(DataSource dataSource) {
 
     }
-    protected static final String RETURN_VALUE = "Return Value";
 
     public HashMap<String, String> getLookupValues() {
         //SqlParameterSource in = new MapSqlParameterSource();

@@ -1,18 +1,24 @@
 package com.microservice.poc.config;
 
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+import java.io.IOException;
 
 
 @Configuration
 public class DataSourceConfig {
-/*
-    @Value("${portal.datasource.driverClassName}")
+
+    @Value("${spring.datasource.driverClassName}")
     private String datasourceDriverClassName;
-    @Value("${portal.datasource.url}")
+    @Value("${spring.datasource.url}")
     private String datasourceUrl;
-    @Value("${portal.datasource.username}")
+    @Value("${spring.h2.username}")
     private String datasourceUsername;
-    @Value("${portal.datasource.password}")
+    @Value("${spring.h2.password}")
     private String datasourcePassword;
     @Value("${portal.datasource.max.connection.pool.size}")
     private int maxPoolSize;
@@ -29,5 +35,5 @@ public class DataSourceConfig {
         return ds;
     }
 
-    */
+
 }
