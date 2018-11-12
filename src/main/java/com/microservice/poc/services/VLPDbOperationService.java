@@ -1,7 +1,7 @@
 package com.microservice.poc.services;
 
 import com.microservice.poc.dao.AbstractDao;
-import com.microservice.poc.dao.VLPDbProcessDao;
+import com.microservice.poc.dao.VLPDbOperationDao;
 import com.microservice.poc.domain.Page;
 import com.microservice.poc.domain.PersonLawfulDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VLPDbProcessService extends AbstractService<PersonLawfulDetail> {
+public class VLPDbOperationService extends AbstractService<PersonLawfulDetail> {
 
     @Autowired
-    public VLPDbProcessService(@Qualifier("VLPDbProcessDao") AbstractDao<PersonLawfulDetail> dao) {
+    public VLPDbOperationService(@Qualifier("VLPDbOperationDao") AbstractDao<PersonLawfulDetail> dao) {
         super(dao);
     }
 
@@ -23,7 +23,7 @@ public class VLPDbProcessService extends AbstractService<PersonLawfulDetail> {
 
     @Override
     public void delete(Long id) {
-        VLPDbProcessDao vLPDbProcessDao = (VLPDbProcessDao) dao;
+        VLPDbOperationDao vLPDbProcessDao = (VLPDbOperationDao) dao;
         vLPDbProcessDao.delete(id);
     }
 
@@ -35,12 +35,12 @@ public class VLPDbProcessService extends AbstractService<PersonLawfulDetail> {
 
     public PersonLawfulDetail find(Long userId) {
 
-        VLPDbProcessDao vLPDbProcessDao = (VLPDbProcessDao) dao;
+        VLPDbOperationDao vLPDbProcessDao = (VLPDbOperationDao) dao;
         return vLPDbProcessDao.find(userId);
     }
 
     public Page<PersonLawfulDetail> findAll(Integer pageNum, Integer pageSize) {
-        VLPDbProcessDao vLPDbProcessDao = (VLPDbProcessDao) dao;
+        VLPDbOperationDao vLPDbProcessDao = (VLPDbOperationDao) dao;
         return vLPDbProcessDao.findAll(pageNum, pageSize);
     }
 }

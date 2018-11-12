@@ -1,7 +1,7 @@
 package com.microservice.poc.controllers;
 
 import com.microservice.poc.domain.PersonLawfulDetail;
-import com.microservice.poc.services.VLPDbProcessService;
+import com.microservice.poc.services.VLPDbOperationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/v1/vlpdbprocess/")
 @Api(description = "Set of endpoints to Store and Retrieve the Lawful presence details  ")
-public class VLPDbProcessController {
+public class VLPDbOperationController {
 
     @Autowired
-    private VLPDbProcessService vLPDbProcessService;
+    private VLPDbOperationService vLPDbProcessService;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ApiOperation("${vLPDbProcessController.getall}")
