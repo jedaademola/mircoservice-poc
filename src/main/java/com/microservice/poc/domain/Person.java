@@ -7,10 +7,10 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.*;
 
 @ApiModel(description = "Class representing a person tracked by the application.")
-public class Person {
+public class Person extends AbstractModel {
     @NotNull
     @ApiModelProperty(notes = "${person.id}", example = "1", required = true, position = 0)
-    private int id;
+    private Long id;
 
     @NotBlank
     @Size(min = 1, max = 20)
@@ -30,7 +30,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, String firstName, String lastName, int age) {
+    public Person(Long id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -61,11 +61,11 @@ public class Person {
         this.age = age;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }
