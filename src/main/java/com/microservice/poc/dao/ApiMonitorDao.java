@@ -1,11 +1,17 @@
 package com.microservice.poc.dao;
 
+import com.microservice.poc.domain.AbstractModel;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.util.HashMap;
 
 @Repository
-public class ApiMonitorDao {
+public class ApiMonitorDao extends AbstractDao<AbstractModel> {
+    @Override
+    public void setDataSource(DataSource dataSource) {
+
+    }
     protected static final String RETURN_VALUE = "Return Value";
 
     public HashMap<String, String> getLookupValues() {

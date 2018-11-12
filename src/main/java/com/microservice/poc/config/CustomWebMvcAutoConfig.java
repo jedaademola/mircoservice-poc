@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class CustomWebMvcAutoConfig extends WebMvcConfigurerAdapter {
 
-    @Value("${external-resource-location}")
+    @Value("${external-resource-location}")//TODO Change this
     String externalResourceLocation;
 
     @Override

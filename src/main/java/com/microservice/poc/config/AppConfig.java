@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 
 @Configuration
@@ -21,15 +21,11 @@ public class AppConfig {
     @Value("${resttemplate.connection.timeout}")
     private int restTemplateConnectionTimeout; //connection timeout in milliseconds
 
-    @Value("${maximum.file.upload}")  //MAXIMUM FILE SIZE FOR UPLOAD FOR THE APP
-    private Long maximumFileUpload;
 
-    //private int maxUploadSizeInMb = 5 * 1024 * 1024; // 5 MB
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(5);
-    }
+    // @Bean
+    //public PasswordEncoder passwordEncoder() {
+    // return new BCryptPasswordEncoder(5);
+    //}
 
 
     private ClientHttpRequestFactory clientHttpRequestFactory() {
@@ -45,33 +41,5 @@ public class AppConfig {
     }
 
 
-/*
-    @Bean
-    public EmbeddedServletContainerFactory servletContainer() {
-        TomcatEmbeddedServletContainerFactory factory =
-                new TomcatEmbeddedServletContainerFactory();
-        return factory;
-    }*/
 
-
-    @Bean(name = "multipartResolver")
-    public MultipartResolver multipartResolver() {
-        return new StandardServletMultipartResolver();
-    }
-/*
-    @Bean
-    public CommonsMultipartResolver multipartResolver() {
-        CommonsMultipartResolver resolver=new CommonsMultipartResolver();
-        resolver.setDefaultEncoding("utf-8");
-        resolver.setMaxUploadSize(maximumFileUpload);
-        return resolver;
-    }*/
-/*
-    @Bean
-    @Order(0)
-    public MultipartFilter multipartFilter() {
-        MultipartFilter multipartFilter = new MultipartFilter();
-        multipartFilter.setMultipartResolverBeanName("multipartResolver");
-        return multipartFilter;
-    }*/
 }
