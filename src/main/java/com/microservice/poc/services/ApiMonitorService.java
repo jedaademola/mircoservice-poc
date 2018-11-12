@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 
 @Service
@@ -17,7 +18,7 @@ public class ApiMonitorService extends AbstractService<AbstractModel> {
         super(dao);
     }
 
-    public HashMap<String, String> getLookupValues() {
+    public HashMap<String, String> getLookupValues() throws SQLException, ClassNotFoundException {
         ApiMonitorDao apiMonitorDao = (ApiMonitorDao) dao;
         return apiMonitorDao.getLookupValues();
     }

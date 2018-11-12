@@ -6,6 +6,7 @@ import com.microservice.poc.utility.H2PocUtil;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 @Repository
@@ -16,7 +17,7 @@ public class ApiMonitorDao extends AbstractDao<AbstractModel> {
 
     }
 
-    public HashMap<String, String> getLookupValues() {
+    public HashMap<String, String> getLookupValues() throws SQLException, ClassNotFoundException {
         //TODO(Connect to temp db and do select of “select * from dual”
         HashMap<String, String> lookupValues = new HashMap<>();
         TwoParam readFromDB = H2PocUtil.read();

@@ -11,7 +11,7 @@ public class AdditionalLawfulDetail extends AbstractModel {
     private String detailName;
     private String detailValue;
 
-    private List<ResponseError> responseError;
+    private List<ResponseErrors> responseErrors;
 
 
 }

@@ -1,5 +1,6 @@
 package com.microservice.poc.utility;
 
+import com.microservice.poc.domain.PersonLawfulDetail;
 import com.microservice.poc.domain.TwoParam;
 
 import java.sql.*;
@@ -14,7 +15,7 @@ public class H2PocUtil {
     static final String USER = "sa";
     static final String PASS = "sa";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         // createTable(); //TODO run ONCE
 
         createTablePersonLawfulDetail();
@@ -27,16 +28,10 @@ public class H2PocUtil {
 
     }
 
-    public static void delete() {
-        Connection conn = null;
+    public static void delete() throws SQLException, ClassNotFoundException {
+        Connection conn = getDbConnection();
         Statement stmt = null;
         try {
-            // STEP 1: Register JDBC driver
-            Class.forName(JDBC_DRIVER);
-
-            // STEP 2: Open a connection
-            System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             // STEP 3: Execute a query
             System.out.println("Creating table in given database...");
@@ -84,16 +79,10 @@ public class H2PocUtil {
         System.out.println("Goodbye!");
     }
 
-    public static void update() {
-        Connection conn = null;
+    public static void update() throws SQLException, ClassNotFoundException {
+        Connection conn = getDbConnection();
         Statement stmt = null;
         try {
-            // STEP 1: Register JDBC driver
-            Class.forName(JDBC_DRIVER);
-
-            // STEP 2: Open a connection
-            System.out.println("Connecting to a database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             // STEP 3: Execute a query
             System.out.println("Connected database successfully...");
@@ -141,7 +130,7 @@ public class H2PocUtil {
         System.out.println("Goodbye!");
     }
 
-    public static TwoParam read() {
+    public static TwoParam read() throws SQLException, ClassNotFoundException {
         //
         createTable();
         insertIntoDb();
@@ -254,18 +243,24 @@ public class H2PocUtil {
         System.out.println("Goodbye!");
     }
 
-
-    public static void insertIntoDb() {
+    static Connection getDbConnection() throws ClassNotFoundException, SQLException {
         Connection conn = null;
+        // STEP 1: Register JDBC driver
+        Class.forName(JDBC_DRIVER);
+
+        // STEP 2: Open a connection
+        System.out.println("Connecting to a selected database...");
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        System.out.println("Connected database successfully...");
+
+        return conn;
+
+    }
+
+    public static void insertIntoDb() throws SQLException, ClassNotFoundException {
+        Connection conn = getDbConnection();
         Statement stmt = null;
         try {
-            // STEP 1: Register JDBC driver
-            Class.forName(JDBC_DRIVER);
-
-            // STEP 2: Open a connection
-            System.out.println("Connecting to a selected database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connected database successfully...");
 
             // STEP 3: Execute a query
             stmt = conn.createStatement();
@@ -307,17 +302,11 @@ public class H2PocUtil {
         System.out.println("Goodbye!");
     }
 
-    public static void createTablePersonLawfulDetail() {
+    public static void createTablePersonLawfulDetail() throws SQLException, ClassNotFoundException {
 
-        Connection conn = null;
+        Connection conn = getDbConnection();
         Statement stmt = null;
         try {
-            // STEP 1: Register JDBC driver
-            Class.forName(JDBC_DRIVER);
-
-            //STEP 2: Open a connection
-            System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             //STEP 3: Execute a query
             System.out.println("Creating table in given database...");
@@ -361,4 +350,58 @@ public class H2PocUtil {
         System.out.println("Goodbye!");
     }
 
+
+    public static void insertIntoPersonLawfulDetail(PersonLawfulDetail personLawfulDetail) throws SQLException, ClassNotFoundException {
+        Connection conn = getDbConnection();
+        Statement stmt = null;
+        try {
+
+            createTablePersonLawfulDetail();
+
+            // STEP 3: Execute a query
+            stmt = conn.createStatement();
+            String sql = "INSERT INTO PersonLawfulDetail " + "VALUES (100,"
+                    + personLawfulDetail.getUUID() + ','
+                    + personLawfulDetail.getEligibilityStatementCode() + ','
+                    + personLawfulDetail.getNonCitCoaCode() + ','
+                    + personLawfulDetail.getFiveYearBarMet() + ','
+                    + personLawfulDetail.getQualifiedCitizenCode() + ','
+                    + personLawfulDetail.getLawfulPreseneCode() + ','
+                    + personLawfulDetail.getResponseCode() + ','
+                    + personLawfulDetail.getCaseNumber() + ','
+                    + personLawfulDetail.getAgencyAction() + ','
+                    + personLawfulDetail.getGrantDate() + ','
+                    + personLawfulDetail.getStatus()
+                    + ")";
+            stmt.executeUpdate(sql);
+
+            // sql = "INSERT INTO Registration " + "VALUES(103, 'Sumit', 'Mittal', 28)";
+            //stmt.executeUpdate(sql);
+
+
+            System.out.println("Inserted records into the table PersonLawfulDetail...");
+
+            // STEP 4: Clean-up environment
+            stmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            se.printStackTrace();
+        } catch (Exception e) {
+            // Handle errors for Class.forName
+            e.printStackTrace();
+        } finally {
+            // finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se2) {
+            } // nothing we can do
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            } // end finally try
+        } // end try
+        System.out.println("Goodbye!");
+    }
 }
