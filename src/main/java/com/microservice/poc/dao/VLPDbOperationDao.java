@@ -1,6 +1,6 @@
 package com.microservice.poc.dao;
 
-import com.microservice.poc.domain.PersonLawfulDetail;
+import com.microservice.poc.domain.PersonLawfulDetail.PersonLawfulDetail;
 import com.microservice.poc.utility.H2PocUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

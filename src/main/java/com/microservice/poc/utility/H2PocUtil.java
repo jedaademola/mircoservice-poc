@@ -1,6 +1,6 @@
 package com.microservice.poc.utility;
 
-import com.microservice.poc.domain.PersonLawfulDetail;
+import com.microservice.poc.domain.PersonLawfulDetail.PersonLawfulDetail;
 import com.microservice.poc.domain.TwoParam;
 
 import java.sql.*;

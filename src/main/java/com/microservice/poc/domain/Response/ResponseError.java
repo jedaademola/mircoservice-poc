@@ -1,30 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.microservice.poc.domain;
+package com.microservice.poc.domain.Response;
+
 
 import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
 import java.util.List;
 
-/**
- *
-
- */
-public class Response implements Serializable {
-
+public class ResponseError {
     @ApiModelProperty(value = "", required = true)
     private String code;
     @ApiModelProperty(value = "", required = true)
     private String description;
     private List<Error> errors;
 
-    public Response() {
+    public ResponseError() {
     }
 
-    public Response(String code, String description) {
+    public ResponseError(String code, String description) {
         this.code = code;
         this.description = description;
     }

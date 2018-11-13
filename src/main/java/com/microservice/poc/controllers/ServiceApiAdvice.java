@@ -1,7 +1,7 @@
 package com.microservice.poc.controllers;
 
 
-import com.microservice.poc.domain.Response;
+import com.microservice.poc.domain.Response.Response;
 import com.microservice.poc.exceptions.*;
 import com.microservice.poc.utility.LoggerUtil;
 import org.slf4j.Logger;

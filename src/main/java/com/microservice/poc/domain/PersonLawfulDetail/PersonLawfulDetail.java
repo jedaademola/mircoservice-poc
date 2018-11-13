@@ -1,5 +1,8 @@
-package com.microservice.poc.domain;
+package com.microservice.poc.domain.PersonLawfulDetail;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.microservice.poc.domain.AbstractModel;
 
 import java.sql.Date;
 import java.util.List;
@@ -7,7 +10,7 @@ import java.util.List;
 //@Data
 
 //@JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PersonLawfulDetail extends AbstractModel {
     public String getUUID() {
         return UUID;

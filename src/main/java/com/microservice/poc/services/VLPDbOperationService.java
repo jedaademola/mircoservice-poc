@@ -3,7 +3,7 @@ package com.microservice.poc.services;
 import com.microservice.poc.dao.AbstractDao;
 import com.microservice.poc.dao.VLPDbOperationDao;
 import com.microservice.poc.domain.Page;
-import com.microservice.poc.domain.PersonLawfulDetail;
+import com.microservice.poc.domain.PersonLawfulDetail.PersonLawfulDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

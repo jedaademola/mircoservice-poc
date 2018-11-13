@@ -1,6 +1,6 @@
 package com.microservice.poc.controllers;
 
-import com.microservice.poc.domain.PersonLawfulDetail;
+import com.microservice.poc.domain.PersonLawfulDetail.PersonLawfulDetail;
 import com.microservice.poc.services.VLPDbOperationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

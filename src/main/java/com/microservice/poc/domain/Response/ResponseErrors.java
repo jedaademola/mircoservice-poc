@@ -1,4 +1,4 @@
-package com.microservice.poc.domain;
+package com.microservice.poc.domain.Response;
 
 
 public class ResponseErrors {
