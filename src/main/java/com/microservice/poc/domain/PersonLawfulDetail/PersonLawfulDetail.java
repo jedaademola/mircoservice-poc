@@ -3,6 +3,7 @@ package com.microservice.poc.domain.PersonLawfulDetail;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.microservice.poc.domain.AbstractModel;
+import com.microservice.poc.domain.Response.ResponseErrors;
 
 import java.sql.Date;
 import java.util.List;
@@ -119,7 +120,18 @@ public class PersonLawfulDetail extends AbstractModel {
     private String agencyAction;
     private Date grantDate;
     private String status;
+    private List<ResponseErrors> responseErrors;
 
     private List<AdditionalLawfulDetail> additionalLawfulDetail;
+
+    public List<ResponseErrors> getResponseErrors() {
+        return responseErrors;
+    }
+
+    public void setResponseErrors(List<ResponseErrors> responseErrors) {
+        this.responseErrors = responseErrors;
+    }
+
+
 
 }

@@ -1,9 +1,11 @@
 package com.microservice.poc.utility;
 
+import com.microservice.poc.domain.PersonLawfulDetail.AdditionalLawfulDetail;
 import com.microservice.poc.domain.PersonLawfulDetail.PersonLawfulDetail;
 import com.microservice.poc.domain.TwoParam;
 
 import java.sql.*;
+import java.util.List;
 
 public class H2PocUtil {
 
@@ -264,18 +266,19 @@ public class H2PocUtil {
 
             // STEP 3: Execute a query
             stmt = conn.createStatement();
-            String sql = "INSERT INTO Registration " + "VALUES (100, 'Zara', 'Ali', 18)";
+            int uuid = Utility.generateRandom(5) + 1;
+            String sql = "INSERT INTO Registration " + "VALUES (" + uuid + ", 'Zara', 'Ali', 18)";
 
             stmt.executeUpdate(sql);
-            sql = "INSERT INTO Registration " + "VALUES (101, 'Mahnaz', 'Fatma', 25)";
+            //sql = "INSERT INTO Registration " + "VALUES (101, 'Mahnaz', 'Fatma', 25)";
 
-            stmt.executeUpdate(sql);
-            sql = "INSERT INTO Registration " + "VALUES (102, 'Zaid', 'Khan', 30)";
+            // stmt.executeUpdate(sql);
+            // sql = "INSERT INTO Registration " + "VALUES (102, 'Zaid', 'Khan', 30)";
 
-            stmt.executeUpdate(sql);
-            sql = "INSERT INTO Registration " + "VALUES(103, 'Sumit', 'Mittal', 28)";
+            //stmt.executeUpdate(sql);
+            // sql = "INSERT INTO Registration " + "VALUES(103, 'Sumit', 'Mittal', 28)";
 
-            stmt.executeUpdate(sql);
+            //stmt.executeUpdate(sql);
             System.out.println("Inserted records into the table...");
 
             // STEP 4: Clean-up environment
@@ -350,6 +353,49 @@ public class H2PocUtil {
         System.out.println("Goodbye!");
     }
 
+    public static void createTableAdditionalLawfulDetail() throws SQLException, ClassNotFoundException {
+
+        Connection conn = getDbConnection();
+        Statement stmt = null;
+        try {
+
+            //STEP 3: Execute a query
+            System.out.println("Creating table in given database...");
+            stmt = conn.createStatement();
+            String sql = "CREATE TABLE   AdditionalLawfulDetail " +
+                    "(id INTEGER not NULL, " +
+                    " uuid VARCHAR(50), " +
+                    " detailName VARCHAR(50), " +
+                    " detailValue VARCHAR(50), " +
+                    " PRIMARY KEY ( id ))";
+            stmt.executeUpdate(sql);
+            System.out.println("Created table AdditionalLawfulDetail in given database...");
+
+            // STEP 4: Clean-up environment
+            stmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+            se.printStackTrace();
+        } catch (Exception e) {
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        } finally {
+            //finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se2) {
+            } // nothing we can do
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            } //end finally try
+        } //end try
+        System.out.println("Goodbye!");
+    }
+
+
 
     public static void insertIntoPersonLawfulDetail(PersonLawfulDetail personLawfulDetail) throws SQLException, ClassNotFoundException {
         Connection conn = getDbConnection();
@@ -357,26 +403,36 @@ public class H2PocUtil {
         try {
 
             createTablePersonLawfulDetail();
+            createTableAdditionalLawfulDetail();
 
+            int id = Utility.generateRandom(5) + 1;
             // STEP 3: Execute a query
             stmt = conn.createStatement();
-            String sql = "INSERT INTO PersonLawfulDetail " + "VALUES (100,"
-                    + personLawfulDetail.getUUID() + ','
-                    + personLawfulDetail.getEligibilityStatementCode() + ','
-                    + personLawfulDetail.getNonCitCoaCode() + ','
-                    + personLawfulDetail.getFiveYearBarMet() + ','
-                    + personLawfulDetail.getQualifiedCitizenCode() + ','
-                    + personLawfulDetail.getLawfulPreseneCode() + ','
-                    + personLawfulDetail.getResponseCode() + ','
-                    + personLawfulDetail.getCaseNumber() + ','
-                    + personLawfulDetail.getAgencyAction() + ','
-                    + personLawfulDetail.getGrantDate() + ','
-                    + personLawfulDetail.getStatus()
+            String sql = "INSERT INTO PersonLawfulDetail " + "VALUES (" + id + ","
+                    + personLawfulDetail.getUUID() + ","
+                    + personLawfulDetail.getEligibilityStatementCode() + ","
+                    + personLawfulDetail.getNonCitCoaCode() + ","
+                    + personLawfulDetail.getFiveYearBarMet() + ","
+                    + personLawfulDetail.getQualifiedCitizenCode() + ","
+                    + personLawfulDetail.getLawfulPreseneCode() + ","
+                    + personLawfulDetail.getResponseCode() + ","
+                    + personLawfulDetail.getCaseNumber() + ","
+                    + personLawfulDetail.getAgencyAction() + ","
+                    + personLawfulDetail.getGrantDate() + ","
+                    + "0"
                     + ")";
             stmt.executeUpdate(sql);
 
-            // sql = "INSERT INTO Registration " + "VALUES(103, 'Sumit', 'Mittal', 28)";
-            //stmt.executeUpdate(sql);
+            List<AdditionalLawfulDetail> additionalLawfulDetail = personLawfulDetail.getAdditionalLawfulDetail();
+            for (AdditionalLawfulDetail detail : additionalLawfulDetail) {
+                int uuidDetails = Utility.generateRandom(5) + 1;
+                sql = "INSERT INTO AdditionalLawfulDetail " + "VALUES ("
+                        + uuidDetails + ","
+                        + id + ","
+                        + detail.getDetailName() + ","
+                        + detail.getDetailValue() + ")";
+                stmt.executeUpdate(sql);
+            }
 
 
             System.out.println("Inserted records into the table PersonLawfulDetail...");

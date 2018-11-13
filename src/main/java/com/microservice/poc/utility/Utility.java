@@ -1,6 +1,7 @@
 package com.microservice.poc.utility;
 
 
+import com.microservice.poc.exceptions.RandomGeneratorUnavailableException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -208,9 +209,9 @@ public class Utility {
             return number.nextInt(length);
         }
 
-        //throw new RandomGeneratorUnavailableException("10060", "number generator is null or uninitialized");
+        throw new RandomGeneratorUnavailableException("10060", "number generator is null or uninitialized");
 
-        return null;
+        // return null;
     }
 
     public static String left(String str, int len) {
