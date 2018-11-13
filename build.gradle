@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+apply plugin: 'application'
+
+mainClassName = 'com.microservice.poc.Application'
+
+group = 'com.microservice.poc'
+version = '1.0.0'
+
+description = """Microservice-poc"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'commons-codec', name: 'commons-codec', version:'1.9'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.5.RELEASE'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version:'2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version:'2.9.2'
+    compile group: 'io.springfox', name: 'springfox-bean-validators', version:'2.9.2'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version:'2.0.5.RELEASE'
+    compile(group: 'org.apache.httpcomponents', name: 'httpclient', version:'4.3.4') {
+exclude(module: 'commons-logging')
+    }
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version:'1.0.1.Final'
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version:'2.0.5.RELEASE'
+    runtime group: 'com.h2database', name: 'h2', version:'1.4.197'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.5.RELEASE'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.16.20'
+}
